@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seal Detector - Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f3f4f6;
+        overflow-x: hidden;
+      }
+
+      .gradient-header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      }
+
+      .card {
+        background: #ffffff;
+        border-radius: 1rem;
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    <!-- HEADER -->
+    <header
+      class="gradient-header text-white py-8 px-4 text-center rounded-b-[40px] shadow-lg"
+    >
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+        Seal Detector
+      </h1>
+      <p class="mt-3 text-sm md:text-lg opacity-80">Detection Results</p>
+    </header>
+
+    <!-- CONTENT -->
+    <main
+      class="flex-grow p-6 md:p-12 flex flex-col items-center justify-center"
+    >
+      <div class="card p-6 md:p-12 w-full max-w-3xl text-center">
+        <h2 class="text-2xl font-bold mb-6 text-slate-800">Inference Output</h2>
+
+        <!-- IMAGE -->
+        <img
+          id="result-image"
+          class="hidden max-w-full max-h-[70vh] mx-auto rounded-xl border"
+        />
+
+        <!-- VIDEO -->
+        <video
+          id="result-video"
+          class="hidden max-w-full max-h-[70vh] mx-auto rounded-xl border"
+          controls
+          autoplay
+        ></video>
+
+        <div class="mt-8">
+          <a
+            href="/"
+            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform duration-200 transform hover:scale-105"
+          >
+            Run Another Inference
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get("type");
+      const src = params.get("src");
+
+      const img = document.getElementById("result-image");
+      const video = document.getElementById("result-video");
+
+      if (!type || !src) {
+        alert("No inference result provided.");
+      }
+
+      if (type === "image") {
+        img.src = src;
+        img.classList.remove("hidden");
+      }
+
+      if (type === "video") {
+        video.src = src;
+        video.classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>

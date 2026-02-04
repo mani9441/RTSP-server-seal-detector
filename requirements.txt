@@ -1,0 +1,20 @@
+# PyTorch CUDA 11.8
+torch==2.0.1+cu118
+torchvision==0.15.2+cu118
+torchaudio==2.0.2+cu118
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+mmengine==0.10.7
+mmdet==3.3.0
+mmyolo==0.6.0
+
+numpy==1.24.3
+opencv-python==4.11.0.86
+pillow>=10.0
+matplotlib>=3.7
+requests>=2.31.0
+tqdm>=4.67.0
+pyyaml>=6.0
+
+fastapi
+uvicorn

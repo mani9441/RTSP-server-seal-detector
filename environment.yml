@@ -1,0 +1,31 @@
+name: det-env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+
+  # CUDA / Torch
+  - pytorch=2.0.1
+  - pytorch-cuda=11.8
+  - torchvision=0.15.2
+  - torchaudio=2.0.2
+
+  - pip:
+      - mmcv==2.0.1
+      - mmengine==0.10.7
+      - mmdet==3.3.0
+      - mmyolo==0.6.0
+      - git+https://github.com/facebookresearch/detectron2.git@v0.6
+      - fastapi
+      - uvicorn
+      - opencv-python==4.11.0.86
+      - numpy==1.24.3
+      - pillow
+      - matplotlib
+      - tqdm
+      - pyyaml
