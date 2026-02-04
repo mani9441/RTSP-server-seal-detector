@@ -117,12 +117,12 @@
       <div class="mb-4">
         <label
           class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-2"
-          >RTSP Stream URL</label
+          >Camera Source (RTSP, 0, 1, video.mp4, etc.)</label
         >
         <input
           type="text"
           id="rtsp-input"
-          placeholder="rtsp://admin:pass@ip:port/stream"
+          placeholder="rtsp://...  OR  0  OR  video.mp4"
           class="w-full bg-slate-800 border border-slate-700 text-white p-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
         />
       </div>
@@ -186,12 +186,12 @@
         }, 800);
       });
 
-      function startStream(url) {
+      function startStream(source) {
         loadingState.classList.remove("hidden");
         resultDisplay.classList.add("hidden");
 
-        // Pointing to your backend endpoint
-        const backendUrl = `/predict/rtsp?url=${encodeURIComponent(url)}`;
+        // ✅ MATCHES YOUR NEW BACKEND
+        const backendUrl = `/predict/stream?source=${encodeURIComponent(source)}`;
 
         resultDisplay.src = backendUrl;
 
@@ -203,7 +203,7 @@
         resultDisplay.onerror = () => {
           loadingState.classList.remove("hidden");
           loadingState.querySelector("p").innerText =
-            "Stream Error - Check URL";
+            "Stream Error - Check Source";
           loadingState
             .querySelector(".loading-spinner")
             .classList.add("hidden");
