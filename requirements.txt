@@ -8,6 +8,9 @@ mmengine==0.10.7
 mmdet==3.3.0
 mmyolo==0.6.0
 
+--extra-index-url https://download.openmmlab.com/mmcv/dist/cu118/torch2.0/index.html
+mmcv==2.0.1
+
 numpy==1.24.3
 opencv-python==4.11.0.86
 pillow>=10.0
